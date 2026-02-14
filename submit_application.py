@@ -31,7 +31,7 @@ def submit_application():
         payload, separators=(",", ":"), sort_keys=True, ensure_ascii=False
     )
 
-    secret = "hello-there-from-b12"
+    secret = os.environ.get("SECRET_SIG", "")
     signature = create_signature(payload_string, secret)
 
     print("Sending request to https://b12.io/apply/submission")
